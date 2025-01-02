@@ -1,12 +1,14 @@
 package com.alessandragodoy.forohub.dto;
 
 import com.alessandragodoy.forohub.model.Topic;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.List;
 
 public record TopicDTO(
 		String title,
 		String message,
+		@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
 		String creationDate,
 		String status,
 		String author,
