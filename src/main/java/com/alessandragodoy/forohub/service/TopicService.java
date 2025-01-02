@@ -16,4 +16,11 @@ public class TopicService {
 	public Page<TopicDTO> getAllTopics(Pageable pageable) {
 		return topicRepository.findAll(pageable).map(TopicDTO::new);
 	}
+
+	public TopicDTO getTopicById(Long id) {
+		return topicRepository.findById(id)
+				.map(TopicDTO::new)
+				.orElseThrow(() -> new ResourceNotFoundException("There is " +
+				"no topic with id " + id + "."));
+	}
 }

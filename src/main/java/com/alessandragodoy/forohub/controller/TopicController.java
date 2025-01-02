@@ -24,4 +24,10 @@ public class TopicController {
 		return ResponseEntity.ok(topicService.getAllTopics(pageable));
 	}
 
+	@GetMapping("/{id}")
+	public ResponseEntity<TopicDTO> requestTopicById(@PathVariable Long id) {
+		return ResponseEntity.ok(topicService.getTopicById(id));
+	}
+
+
 }
