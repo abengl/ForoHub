@@ -1,26 +1,27 @@
 package com.alessandragodoy.forohub.controller;
 
+import com.alessandragodoy.forohub.dto.RequestCreateTopic;
 import com.alessandragodoy.forohub.dto.TopicDTO;
 import com.alessandragodoy.forohub.service.TopicService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/topic")
+@RequestMapping("/topics")
 @RequiredArgsConstructor
 public class TopicController {
 
 	private final TopicService topicService;
 
 	@GetMapping
-	public ResponseEntity<Page<TopicDTO>> getAllTopics(@PageableDefault(size = 5, sort = "creationDate") Pageable pageable) {
+	public ResponseEntity<Page<TopicDTO>> requestAllTopics(
+			@PageableDefault(size = 5, sort = "creationDate") Pageable pageable) {
 		return ResponseEntity.ok(topicService.getAllTopics(pageable));
 	}
 
@@ -29,5 +30,10 @@ public class TopicController {
 		return ResponseEntity.ok(topicService.getTopicById(id));
 	}
 
+	@PostMapping
+	public ResponseEntity<TopicDTO> requestToCreateTopic(@RequestBody @Valid RequestCreateTopic request) {
+		TopicDTO createdTopic = topicService.createTopic(request);
+		return ResponseEntity.status(HttpStatus.CREATED).body(createdTopic);
+	}
 
 }
