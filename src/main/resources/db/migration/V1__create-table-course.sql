@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS course (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category ENUM('FRONTEND', 'BACKEND', 'DEVOPS') NOT NULL,
+    UNIQUE KEY unique_course_name (name)
+);
+

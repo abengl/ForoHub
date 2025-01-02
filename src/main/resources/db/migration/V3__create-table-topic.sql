@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS topic (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    message VARCHAR(500) NOT NULL,
+    creation_date DATETIME NOT NULL,
+    status ENUM('OPEN', 'ONGOING', 'CLOSED') NOT NULL,
+    author_id BIGINT NOT NULL,
+    course_id BIGINT NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES user_foro(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE
+);
