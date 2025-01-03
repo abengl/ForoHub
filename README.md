@@ -16,7 +16,7 @@
 <img src="src/main/resources/static/messages_background.jpg" alt="animation background of a bubble messages" 
 height="250px" >
 </div>
-**ForoHub** is a REST API designed to manage discussion forums through CRUD operations, with support for 
+<b>ForoHub</b> is a REST API designed to manage discussion forums through CRUD operations, with support for 
 authentication and authorization. The application is developed with Spring Boot.
 
 ### Main Features:
@@ -93,22 +93,22 @@ Ensure you have the following installed:
 ## Examples
 
 ### Authenticate a User
-<img src="src/main/resources/static/endpoint_1.png" height="250px">
+<img src="src/main/resources/static/endpoint_1.png" height="150px">
 
 ### Obtain All Topics or By Topic ID
-<img src="src/main/resources/static/endpoint_2.png" height="250px">
-<img src="src/main/resources/static/endpoint_3.png" height="250px">
+<img src="src/main/resources/static/endpoint_2.png" height="350px">
+<img src="src/main/resources/static/endpoint_3.png" height="200px">
 
 ### Create a New Topic or Update a Topic
-<img src="src/main/resources/static/endpoint_4.png" height="250px">
+<img src="src/main/resources/static/endpoint_4.png" height="200px">
 <img src="src/main/resources/static/endpoint_5.png" height="250px">
 
 ### Delete a Topic By ID
 <img src="src/main/resources/static/endpoint_6.png" height="250px">
 
 ### Error Handling
-<img src="src/main/resources/static/endpoint_7_error.png" height="250px">
-<img src="src/main/resources/static/endpoint_8_error.png" height="250px">
+<img src="src/main/resources/static/endpoint_7_error.png" height="200px">
+<img src="src/main/resources/static/endpoint_8_error.png" height="200px">
 
 
 
