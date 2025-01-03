@@ -11,6 +11,9 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents an answer in the forum.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

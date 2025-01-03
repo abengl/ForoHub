@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller for handling requests related to topics.
+ */
 @RestController
 @RequestMapping("/topics")
 @RequiredArgsConstructor
@@ -42,9 +45,9 @@ public class TopicController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> requestToDeleteTopic(@PathVariable Long id) {
+	public ResponseEntity<Void> requestToDeleteTopic(@PathVariable Long id) {
 		topicService.deleteTopic(id);
-		return ResponseEntity.status(HttpStatus.OK).body("Topic with id " + id + " deleted successfully");
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 
 }

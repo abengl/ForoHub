@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+/**
+ * Service class for managing topics.
+ */
 @Service
 @RequiredArgsConstructor
 public class TopicService {
@@ -38,7 +41,7 @@ public class TopicService {
 
 	@Transactional
 	public TopicDTO createTopic(RequestCreateTopic request) {
-		UserForo user = userForoRepository.findByEmail(request.email())
+		UserForo user = userForoRepository.findByEmailIgnoreCase(request.email())
 				.orElseThrow(() -> new ResourceNotFoundException("The email " + request.email() + " is unregistered."));
 
 		Course course = courseRepository.findByNameIgnoreCase(request.course().toLowerCase())
