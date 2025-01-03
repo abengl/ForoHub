@@ -3,7 +3,7 @@ package com.alessandragodoy.forohub.controller;
 import com.alessandragodoy.forohub.dto.AuthenticateUser;
 import com.alessandragodoy.forohub.dto.JWTTokenDTO;
 import com.alessandragodoy.forohub.model.UserForo;
-import com.alessandragodoy.forohub.security.TokenService;
+import com.alessandragodoy.forohub.config.security.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

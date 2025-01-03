@@ -1,4 +1,4 @@
-package com.alessandragodoy.forohub.security;
+package com.alessandragodoy.forohub.config.security;
 
 import com.alessandragodoy.forohub.model.UserForo;
 import com.auth0.jwt.JWT;
