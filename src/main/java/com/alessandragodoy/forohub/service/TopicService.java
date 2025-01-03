@@ -38,7 +38,7 @@ public class TopicService {
 
 	@Transactional
 	public TopicDTO createTopic(RequestCreateTopic request) {
-		UserForo user = userForoRepository.findByEmail(request.email())
+		UserForo user = userForoRepository.findByEmailIgnoreCase(request.email())
 				.orElseThrow(() -> new ResourceNotFoundException("The email " + request.email() + " is unregistered."));
 
 		Course course = courseRepository.findByNameIgnoreCase(request.course().toLowerCase())
