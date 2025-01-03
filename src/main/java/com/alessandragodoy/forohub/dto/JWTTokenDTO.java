@@ -1,6 +1,10 @@
 package com.alessandragodoy.forohub.dto;
 
-import jakarta.validation.constraints.NotBlank;
 
-public record JWTTokenDTO(@NotBlank String token) {
+/**
+ * DTO for JWT token.
+ *
+ * @param token the JWT token string
+ */
+public record JWTTokenDTO(String token) {
 }

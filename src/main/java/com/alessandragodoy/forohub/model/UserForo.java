@@ -16,6 +16,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Represents a user in the forum system.
+ * Implements the UserDetails interface for Spring Security integration.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -14,6 +14,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * Security filter that processes JWT tokens from the Authorization header.
+ */
 @Component
 @RequiredArgsConstructor
 public class SecurityFilter extends OncePerRequestFilter {
@@ -21,6 +24,15 @@ public class SecurityFilter extends OncePerRequestFilter {
 	private final TokenService tokenService;
 	private final UserForoRepository userForoRepository;
 
+	/**
+	 * Filters incoming requests and processes JWT tokens.
+	 *
+	 * @param request the HTTP request
+	 * @param response the HTTP response
+	 * @param filterChain the filter chain
+	 * @throws ServletException if an error occurs during filtering
+	 * @throws IOException if an I/O error occurs during filtering
+	 */
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {

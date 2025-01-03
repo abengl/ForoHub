@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * GlobalExceptionHandler handles various exceptions thrown by the application
+ * and provides appropriate HTTP responses.
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -28,6 +32,7 @@ public class GlobalExceptionHandler {
 		errorResponse.put("details", e.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 	}
+
 	@ExceptionHandler(InvalidValueException.class)
 	public ResponseEntity<Object> handleInvalidValueException(InvalidValueException e) {
 		Map<String, String> errorResponse = new HashMap<>();
