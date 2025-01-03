@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +48,46 @@ public class TopicService {
 		topicRepository.save(topic);
 
 		return new TopicDTO(topic);
+	}
+
+	@Transactional
+	public TopicDTO updateTopic(RequestCreateTopic request, Long id) {
+		Topic topic = topicRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("There is no topic with id " + id + "."));
+
+		if (!request.title().equalsIgnoreCase(topic.getTitle())) {
+			topic.setTitle(request.title());
+		}
+
+		if (!request.message().equalsIgnoreCase(topic.getMessage())) {
+			topic.setMessage(request.message());
+		}
+
+		if (!request.email().equalsIgnoreCase(topic.getAuthor().getEmail())) {
+			topic.getAuthor().setEmail(request.email());
+		}
+
+		if (!request.course().equalsIgnoreCase(topic.getCourse().getName())) {
+			Optional<Course> course = courseRepository.findByNameIgnoreCase(request.course());
+			if (course.isPresent()) {
+				topic.setCourse(course.get());
+			} else {
+				throw new ResourceNotFoundException("The course is not valid.");
+			}
+		}
+
+		topicRepository.save(topic);
+
+		return new TopicDTO(topic);
+	}
+
+	@Transactional
+	public void deleteTopic(Long id) {
+		boolean topicExistsById = topicRepository.existsById(id);
+		if (topicExistsById) {
+			topicRepository.deleteById(id);
+		} else {
+			throw new ResourceNotFoundException("There is no topic with id " + id + ".");
+		}
 	}
 }

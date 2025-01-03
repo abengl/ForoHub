@@ -28,6 +28,12 @@ public class GlobalExceptionHandler {
 		errorResponse.put("details", e.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 	}
+	@ExceptionHandler(InvalidValueException.class)
+	public ResponseEntity<Object> handleInvalidValueException(InvalidValueException e) {
+		Map<String, String> errorResponse = new HashMap<>();
+		errorResponse.put("error", e.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {

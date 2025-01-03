@@ -9,10 +9,10 @@ public record RequestCreateTopic(
 		@Size(max = 100, message = "The maximum number of characters is 100")
 		String title,
 		@NotBlank(message = "The message is a required value can not be empty.")
-		@Size(max = 100, message = "The maximum number of characters is 500")
+		@Size(max = 500, message = "The maximum number of characters is 500")
 		String message,
 		@Email
-		@NotBlank(message = "The username is a required value can not be empty.")
+		@NotBlank(message = "The email is a required value can not be empty.")
 		String email,
 		@NotBlank(message = "The course is a required value can not be empty.")
 		String course

@@ -36,4 +36,15 @@ public class TopicController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(createdTopic);
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity<TopicDTO> requestToUpdateTopic(@RequestBody @Valid RequestCreateTopic request, @PathVariable Long id) {
+		return ResponseEntity.ok(topicService.updateTopic(request, id));
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> requestToDeleteTopic(@PathVariable Long id) {
+		topicService.deleteTopic(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Topic with id " + id + " deleted successfully");
+	}
+
 }
